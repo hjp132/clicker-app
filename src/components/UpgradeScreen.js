@@ -9,7 +9,7 @@ const UpgradeScreen = () => {
             <Text style={styles.upgradeTitle}>Upgrades:</Text>
             <UpgradeItem
                 title='test'
-                cost={50}
+                cost={10}
             />
 
 
@@ -42,4 +42,5 @@ const styles = StyleSheet.create({
         fontSize: 20
     }
 });
+
 export default UpgradeScreen;

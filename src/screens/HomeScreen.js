@@ -2,9 +2,19 @@ import React, { useState } from "react";
 import { Text, StyleSheet, View, Button } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import UpgradeScreen from '../components/UpgradeScreen';
+import { setNumber, getClickNumber } from "../hooks/index";
 
-const HomeScreen = ({ navigation }) => {
-  const [clickerValue, setValue] = useState(0)
+
+
+const HomeScreen = () => {
+
+  function randomName() {
+    setNumber(clickerValue + 1)
+    setClickNumber(getClickNumber())
+    console.log(clickerValue)
+  }
+
+  const [clickerValue, setClickNumber] = useState(0)
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Clicker App</Text>
@@ -12,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
       {/* <View stlye={styles.clickerBox}></View>  */}
       <View>
         <TouchableOpacity>
-          <Text style={styles.clickBtn} onPress={() => { setValue(clickerValue + 1) }}>
+          <Text style={styles.clickBtn} onPress={randomName}>
             {clickerValue}
           </Text>
         </TouchableOpacity>
@@ -48,3 +58,4 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
+
