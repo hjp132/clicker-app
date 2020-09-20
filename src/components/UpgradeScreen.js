@@ -7,10 +7,27 @@ const UpgradeScreen = () => {
         <View>
 
             <Text style={styles.upgradeTitle}>Upgrades:</Text>
-            <UpgradeItem
-                title='test'
-                cost={10}
-            />
+
+            <View style={styles.upgradeContainer}>
+                <UpgradeItem
+                    title='test'
+                    cost='10'
+
+                />
+
+                <UpgradeItem
+                    title='test2'
+                    cost='50'
+                />
+
+                <UpgradeItem
+                    title='test2'
+                    cost='30'
+                />
+            </View>
+
+
+
 
 
 
@@ -33,13 +50,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 50
     },
-    UpgradeItemTitle: {
-        color: 'black',
-        fontSize: 20
-    },
-    UpgradeItemCost: {
-        color: 'black',
-        fontSize: 20
+    upgradeItem: {
+
     }
 });
 
