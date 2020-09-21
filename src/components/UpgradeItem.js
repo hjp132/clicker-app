@@ -17,7 +17,8 @@ const UpgradeItem = props => {
             <TouchableOpacity style={styles.UpgradeItemContainer}
                 onPress={
                     () => {
-                        props.buyUpgrade(props.cost)
+                        props.buyUpgrade(props.cost, props.upgrade)
+
                     }
                     // props.buyUpgrade(props.cost)
 
@@ -53,11 +54,12 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         padding: 5,
         borderWidth: 2,
-        borderColor: 'black'
-
+        borderColor: 'black',
     },
     UpgradeItemDesc: {
-
+    },
+    Hidden: {
+        display: 'none'
     }
 });
 export default UpgradeItem;

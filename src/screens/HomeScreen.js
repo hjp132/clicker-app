@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Text, StyleSheet, View, Button } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Text, StyleSheet, View, Button, timer } from "react-native";
 import { TouchableOpacity } from "react-native";
 import UpgradeScreen from '../components/UpgradeScreen';
 import { setNumber, getClickNumber } from "../hooks/index";
@@ -15,16 +15,29 @@ const HomeScreen = (props) => {
     console.log(clickerValue)
   }
 
-  function buytheUpgrade(cost) {
-    if (clickerValue > cost) {
-      console.log('can afford, should take away the value')
+  function buytheUpgrade(cost, upgrade) {
+    if (clickerValue < cost) {
+      console.log('you cant afford this upgrade')
+      return
+    } else {
+      console.log('can afford, upgrade purchased')
       setNumber(clickerValue - cost)
       setClickNumber(getClickNumber())
       console.log(clickerValue)
-    } else {
-      console.log('you cant afford this upgrade')
+
+      // calls the upgrade function the user buys
+      // upgrade()
     }
   }
+
+
+
+
+
+
+
+
+
 
 
   const [clickerValue, setClickNumber] = useState(0)
@@ -48,6 +61,8 @@ const HomeScreen = (props) => {
             description='clicks it for you!'
             cost={10}
             buyUpgrade={buytheUpgrade}
+
+
           />
           <UpgradeItem
             title='Clickier buttons'
