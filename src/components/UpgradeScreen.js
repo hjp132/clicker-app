@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import UpgradeItem from '../components/UpgradeItem';
+import { buytheUpgrade } from "../screens/HomeScreen";
 
 const UpgradeScreen = () => {
     return (
@@ -11,18 +12,21 @@ const UpgradeScreen = () => {
             <View style={styles.upgradeContainer}>
                 <UpgradeItem
                     title='test'
-                    cost='10'
+                    cost={10}
+                    buyUpgrade={buytheUpgrade}
 
                 />
 
                 <UpgradeItem
                     title='test2'
-                    cost='50'
+                    cost={30}
+                    buyUpgrade={buytheUpgrade}
                 />
 
                 <UpgradeItem
-                    title='test2'
-                    cost='30'
+                    title='test3'
+                    cost={40}
+                    buyUpgrade={buytheUpgrade}
                 />
             </View>
 
