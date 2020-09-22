@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Text, StyleSheet, View, Button, Dimensions } from "react-native";
 import { TouchableOpacity } from "react-native";
 import UpgradeScreen from '../components/UpgradeScreen';
@@ -11,9 +11,20 @@ const screen = Dimensions.get('window');
 const HomeScreen = (props) => {
 
   function btnClicked() {
-    setNumber(clickerValue + 1)
+    setNumber(clickerValue + 10)
     setClickNumber(getClickNumber())
     console.log(clickerValue)
+  }
+
+  function autoClicker() {
+    setInterval(() => {
+      console.log(' old value : ' + clickerValue)
+      console.log('autoclicker - triggered')
+      setNumber(clickerValue + 20)
+      setClickNumber(getClickNumber())
+      console.log(' new value :  ' + clickerValue);
+    }, 4000);
+
   }
 
   function buytheUpgrade(cost, upgrade) {
@@ -27,7 +38,7 @@ const HomeScreen = (props) => {
       console.log(clickerValue)
 
       // calls the upgrade function the user buys
-      // upgrade()
+      upgrade()
     }
   }
 
@@ -52,8 +63,9 @@ const HomeScreen = (props) => {
           <UpgradeItem
             title='bad auto clicker'
             description='clicks it for you!'
-            cost={10}
+            cost={3}
             buyUpgrade={buytheUpgrade}
+            upgrade={autoClicker}
 
 
           />
@@ -68,6 +80,7 @@ const HomeScreen = (props) => {
             description='what does this do??'
             cost={100}
             buyUpgrade={buytheUpgrade}
+
           />
 
 

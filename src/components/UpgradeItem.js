@@ -51,7 +51,7 @@ const UpgradeItem = props => {
 const styles = StyleSheet.create({
     UpgradeItemTitle: {
         color: '#B9AAFF',
-        fontSize: 18
+        fontSize: 17
     },
     UpgradeItemCost: {
         color: '#B9AAFF',
