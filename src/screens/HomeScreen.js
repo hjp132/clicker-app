@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, Button, timer } from "react-native";
+import { Text, StyleSheet, View, Button, Dimensions } from "react-native";
 import { TouchableOpacity } from "react-native";
 import UpgradeScreen from '../components/UpgradeScreen';
 import { setNumber, getClickNumber } from "../hooks/index";
 import UpgradeItem from '../components/UpgradeItem';
 
 
+const screen = Dimensions.get('window');
 
 const HomeScreen = (props) => {
 
@@ -32,22 +33,14 @@ const HomeScreen = (props) => {
 
 
 
-
-
-
-
-
-
-
-
   const [clickerValue, setClickNumber] = useState(0)
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
         Clicker App</Text>
       <View>
-        <TouchableOpacity onPress={btnClicked}>
-          <Text style={styles.clickBtn}>
+        <TouchableOpacity style={styles.clickBtn} onPress={btnClicked}>
+          <Text style={styles.clickText} >
             {clickerValue}
           </Text>
         </TouchableOpacity>
@@ -96,25 +89,37 @@ const HomeScreen = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'grey'
+    backgroundColor: 'grey',
+    flex: 1,
+    backgroundColor: '#07121B',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   title: {
     fontSize: 30,
     textAlign: 'center',
-    color: 'white',
-    backgroundColor: 'grey'
+    color: '#B9AAFF',
+    marginBottom: 20
   },
   clickBtn: {
-    fontSize: 30,
+    borderWidth: 10,
+    borderColor: '#B9AAFF',
+    width: screen.width / 2,
+    height: screen.width / 2,
+    borderRadius: screen.width / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
     textAlign: 'center',
-    backgroundColor: 'grey',
-    marginTop: 10
   },
   upgradeTitle: {
-    color: 'white',
-    fontSize: 18,
+    color: '#B9AAFF',
+    fontSize: 20,
     textAlign: "center",
     marginTop: 20
+  },
+  clickText: {
+    fontSize: 30,
+    color: '#B9AAFF',
   }
 
 });

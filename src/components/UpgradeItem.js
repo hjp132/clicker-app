@@ -39,24 +39,25 @@ const UpgradeItem = props => {
 
 const styles = StyleSheet.create({
     UpgradeItemTitle: {
-        color: 'black',
+        color: '#B9AAFF',
         fontSize: 15
     },
     UpgradeItemCost: {
-        color: 'black',
-        fontSize: 15
+        color: '#B9AAFF',
+        fontSize: 15,
+        textAlign: 'right'
     },
     UpgradeItemContainer: {
-        backgroundColor: 'white',
         width: 300,
         height: 80,
         marginHorizontal: 50,
         marginVertical: 10,
         padding: 5,
         borderWidth: 2,
-        borderColor: 'black',
+        borderColor: '#B9AAFF',
     },
     UpgradeItemDesc: {
+        color: '#B9AAFF'
     },
     Hidden: {
         display: 'none'
