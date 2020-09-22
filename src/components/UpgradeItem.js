@@ -3,6 +3,11 @@ import { TouchableOpacity, Dimensions } from 'react-native';
 import { Text, StyleSheet, View, Button } from "react-native";
 import { setNumber, getClickNumber } from "../hooks/index";
 
+
+
+
+const screen = Dimensions.get('window');
+
 const UpgradeItem = props => {
     const [clickerValue, setValue] = useState(0)
     useEffect(() => {
@@ -13,22 +18,28 @@ const UpgradeItem = props => {
 
     return (
 
-        <View  >
-            <TouchableOpacity style={styles.UpgradeItemContainer}
-                onPress={
-                    () => {
-                        props.buyUpgrade(props.cost, props.upgrade)
 
-                    }
-                    // props.buyUpgrade(props.cost)
+        <TouchableOpacity style={styles.UpgradeItemContainer}
+            onPress={
+                () => {
+                    props.buyUpgrade(props.cost, props.upgrade)
 
                 }
-            >
+                // props.buyUpgrade(props.cost)
+
+            }
+        >
+            <View style={styles.section1}>
                 <Text style={styles.UpgradeItemTitle} >{props.title}</Text>
                 <Text style={styles.UpgradeItemDesc} >{props.description}</Text>
+            </View>
+            <View style={styles.section2}>
                 <Text style={styles.UpgradeItemCost}>Cost: {props.cost}</Text>
-            </TouchableOpacity>
-        </View>
+            </View>
+
+
+        </TouchableOpacity>
+
 
 
     )
@@ -40,27 +51,49 @@ const UpgradeItem = props => {
 const styles = StyleSheet.create({
     UpgradeItemTitle: {
         color: '#B9AAFF',
-        fontSize: 15
+        fontSize: 18
     },
     UpgradeItemCost: {
         color: '#B9AAFF',
-        fontSize: 15,
-        textAlign: 'right'
+        fontSize: 14,
     },
     UpgradeItemContainer: {
-        width: 300,
-        height: 80,
+        width: screen.width / 1.25,
+        maxHeight: 100,
         marginHorizontal: 50,
         marginVertical: 10,
         padding: 5,
         borderWidth: 2,
         borderColor: '#B9AAFF',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+
+
     },
     UpgradeItemDesc: {
         color: '#B9AAFF'
     },
     Hidden: {
         display: 'none'
+    },
+    section1: {
+        flex: 1,
+        justifyContent: 'center',
+
+        width: '70%',
+        alignItems: 'center',
+
+
+
+    },
+    section2: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+
+
+
     }
 });
 export default UpgradeItem;

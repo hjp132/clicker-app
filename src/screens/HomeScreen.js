@@ -50,7 +50,7 @@ const HomeScreen = (props) => {
         <Text style={styles.upgradeTitle}>Upgrades:</Text>
         <View>
           <UpgradeItem
-            title='Second rate auto clicker'
+            title='bad auto clicker'
             description='clicks it for you!'
             cost={10}
             buyUpgrade={buytheUpgrade}
@@ -59,7 +59,7 @@ const HomeScreen = (props) => {
           />
           <UpgradeItem
             title='Clickier buttons'
-            description='increases click value per click'
+            description='more click value'
             cost={30}
             buyUpgrade={buytheUpgrade}
           />
@@ -69,6 +69,8 @@ const HomeScreen = (props) => {
             cost={100}
             buyUpgrade={buytheUpgrade}
           />
+
+
         </View>
 
       </View>
@@ -113,9 +115,9 @@ const styles = StyleSheet.create({
   },
   upgradeTitle: {
     color: '#B9AAFF',
-    fontSize: 20,
+    fontSize: 18,
     textAlign: "center",
-    marginTop: 20
+    marginVertical: 10
   },
   clickText: {
     fontSize: 30,
