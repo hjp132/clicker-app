@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, View, Button, Dimensions } from "react-native";
 import { TouchableOpacity } from "react-native";
 import UpgradeScreen from '../components/UpgradeScreen';
@@ -10,6 +10,20 @@ const screen = Dimensions.get('window');
 
 const HomeScreen = (props) => {
 
+  const [clickerValue, setClickNumber] = useState(0)
+  const [autoClickerValue, setAutoClickerNumber] = useState(0);
+
+
+  useEffect(() => {
+    const autoClkr = setInterval(() => {
+      setNumber(clickerValue + autoClickerValue)
+
+      setClickNumber(getClickNumber())
+    }, 3000)
+
+    return () => clearInterval(autoClkr)
+  })
+
   function btnClicked() {
     setNumber(clickerValue + 10)
     setClickNumber(getClickNumber())
@@ -17,13 +31,8 @@ const HomeScreen = (props) => {
   }
 
   function autoClicker() {
-    setInterval(() => {
-      console.log(' old value : ' + clickerValue)
-      console.log('autoclicker - triggered')
-      setNumber(clickerValue + 20)
-      setClickNumber(getClickNumber())
-      console.log(' new value :  ' + clickerValue);
-    }, 4000);
+    setAutoClickerNumber(autoClickerValue + 20)
+
 
   }
 
@@ -44,7 +53,7 @@ const HomeScreen = (props) => {
 
 
 
-  const [clickerValue, setClickNumber] = useState(0)
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
