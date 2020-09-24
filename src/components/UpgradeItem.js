@@ -19,7 +19,10 @@ const UpgradeItem = props => {
     return (
 
 
+
+
         <TouchableOpacity style={styles.UpgradeItemContainer}
+
             onPress={
                 () => {
                     props.buyUpgrade(props.cost, props.upgrade)

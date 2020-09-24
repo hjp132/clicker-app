@@ -26,7 +26,7 @@ const HomeScreen = (props) => {
       setNumber(clickerValue + autoClickerValue)
 
       setClickNumber(getClickNumber())
-    }, 3000)
+    }, 1500)
 
     return () => clearInterval(autoClkr)
   })
@@ -59,6 +59,7 @@ const HomeScreen = (props) => {
 
       // calls the upgrade function the user buys
       upgrade()
+
     }
   }
 
@@ -80,12 +81,13 @@ const HomeScreen = (props) => {
       <View>
         <Text style={styles.upgradeTitle}>Upgrades:</Text>
         <View>
+          {/* {this.state.showButton && <Button onPress={() => this.setState({ showButton: false })}>Hello</Button>} */}
           <UpgradeItem
             title='bad auto clicker'
             description='clicks it for you!'
             cost={3}
             buyUpgrade={buytheUpgrade}
-            upgrade={() => autoClicker(20)}
+            upgrade={() => autoClicker(5)}
 
           />
           <UpgradeItem
@@ -100,6 +102,7 @@ const HomeScreen = (props) => {
             description='what does this do??'
             cost={100}
             buyUpgrade={buytheUpgrade}
+            upgrade={() => autoClicker(10)}
 
           />
 
