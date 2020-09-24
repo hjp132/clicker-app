@@ -8,13 +8,20 @@ import UpgradeItem from '../components/UpgradeItem';
 
 const screen = Dimensions.get('window');
 
+// TO DO: 
+// add styling for when you can't afford an upgrade, and on purchase remove element somehow ? 'display: none' probably ? 
+
 const HomeScreen = (props) => {
 
   const [clickerValue, setClickNumber] = useState(0)
   const [autoClickerValue, setAutoClickerNumber] = useState(0);
+  const [clickedValue, setclickedValue] = useState(1);
 
 
+  // setclickedValue(clickedValue + 1)
   useEffect(() => {
+
+
     const autoClkr = setInterval(() => {
       setNumber(clickerValue + autoClickerValue)
 
@@ -24,14 +31,18 @@ const HomeScreen = (props) => {
     return () => clearInterval(autoClkr)
   })
 
-  function btnClicked() {
-    setNumber(clickerValue + 10)
+  function btnClicked(addedValue) {
+    setNumber(clickerValue + addedValue)
     setClickNumber(getClickNumber())
     console.log(clickerValue)
   }
 
-  function autoClicker() {
-    setAutoClickerNumber(autoClickerValue + 20)
+  function increaseClickedValue(newValue) {
+    setclickedValue(clickedValue + newValue)
+  }
+
+  function autoClicker(addedValue) {
+    setAutoClickerNumber(autoClickerValue + addedValue)
 
 
   }
@@ -59,7 +70,7 @@ const HomeScreen = (props) => {
       <Text style={styles.title}>
         Clicker App</Text>
       <View>
-        <TouchableOpacity style={styles.clickBtn} onPress={btnClicked}>
+        <TouchableOpacity style={styles.clickBtn} onPress={() => btnClicked(clickedValue)}>
           <Text style={styles.clickText} >
             {clickerValue}
           </Text>
@@ -74,8 +85,7 @@ const HomeScreen = (props) => {
             description='clicks it for you!'
             cost={3}
             buyUpgrade={buytheUpgrade}
-            upgrade={autoClicker}
-
+            upgrade={() => autoClicker(20)}
 
           />
           <UpgradeItem
@@ -83,6 +93,7 @@ const HomeScreen = (props) => {
             description='more click value'
             cost={30}
             buyUpgrade={buytheUpgrade}
+            upgrade={() => increaseClickedValue(5)}
           />
           <UpgradeItem
             title='Cooler clicker'
