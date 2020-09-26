@@ -14,38 +14,44 @@ const UpgradeItem = props => {
         setValue(getClickNumber())
     })
 
-
-
-    return (
-
+    const [visible, setVisible] = useState(true);
 
 
 
-        <TouchableOpacity style={styles.UpgradeItemContainer}
+    if (visible) {
+        return (
 
-            onPress={
-                () => {
-                    props.buyUpgrade(props.cost, props.upgrade)
+
+            <TouchableOpacity style={styles.UpgradeItemContainer}
+
+                onPress={
+                    () => {
+                        let buy = props.buyUpgrade(props.cost, props.upgrade)
+                        setVisible(buy)
+
+                    }
+                    // props.buyUpgrade(props.cost)
 
                 }
-                // props.buyUpgrade(props.cost)
-
-            }
-        >
-            <View style={styles.section1}>
-                <Text style={styles.UpgradeItemTitle} >{props.title}</Text>
-                <Text style={styles.UpgradeItemDesc} >{props.description}</Text>
-            </View>
-            <View style={styles.section2}>
-                <Text style={styles.UpgradeItemCost}>Cost: {props.cost}</Text>
-            </View>
+            >
+                <View style={styles.section1}>
+                    <Text style={styles.UpgradeItemTitle} >{props.title}</Text>
+                    <Text style={styles.UpgradeItemDesc} >{props.description}</Text>
+                </View>
+                <View style={styles.section2}>
+                    <Text style={styles.UpgradeItemCost}>Cost: {props.cost}</Text>
+                </View>
 
 
-        </TouchableOpacity>
+            </TouchableOpacity>
+        )
+    }
 
-
-
-    )
+    else {
+        return (
+            <View></View>
+        )
+    }
 }
 
 
@@ -72,7 +78,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         borderRadius: 10
-
     },
     UpgradeItemDesc: {
         color: '#B9AAFF'

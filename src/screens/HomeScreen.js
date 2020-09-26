@@ -17,6 +17,7 @@ const HomeScreen = (props) => {
   const [autoClickerValue, setAutoClickerNumber] = useState(0);
   const [clickedValue, setclickedValue] = useState(1);
 
+  let visible = true;
 
   // setclickedValue(clickedValue + 1)
   useEffect(() => {
@@ -50,16 +51,15 @@ const HomeScreen = (props) => {
   function buytheUpgrade(cost, upgrade) {
     if (clickerValue < cost) {
       console.log('you cant afford this upgrade')
-      return
+      return true
     } else {
       console.log('can afford, upgrade purchased')
       setNumber(clickerValue - cost)
       setClickNumber(getClickNumber())
       console.log(clickerValue)
-
       // calls the upgrade function the user buys
       upgrade()
-
+      return false
     }
   }
 
@@ -82,14 +82,15 @@ const HomeScreen = (props) => {
         <Text style={styles.upgradeTitle}>Upgrades:</Text>
         <View>
           {/* {this.state.showButton && <Button onPress={() => this.setState({ showButton: false })}>Hello</Button>} */}
+
           <UpgradeItem
             title='bad auto clicker'
             description='clicks it for you!'
             cost={3}
             buyUpgrade={buytheUpgrade}
             upgrade={() => autoClicker(5)}
-
           />
+
           <UpgradeItem
             title='Clickier buttons'
             description='more click value'
@@ -103,7 +104,6 @@ const HomeScreen = (props) => {
             cost={100}
             buyUpgrade={buytheUpgrade}
             upgrade={() => autoClicker(10)}
-
           />
 
 
