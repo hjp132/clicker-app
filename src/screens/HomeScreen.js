@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Text, StyleSheet, View, Button, Dimensions } from "react-native";
-import { TouchableOpacity } from "react-native";
+import { Text, StyleSheet, View, Button, Dimensions, TouchableOpacity, ScrollView } from "react-native";
 import UpgradeScreen from '../components/UpgradeScreen';
 import { setNumber, getClickNumber } from "../hooks/index";
 import UpgradeItem from '../components/UpgradeItem';
+
 
 
 const screen = Dimensions.get('window');
@@ -67,7 +67,9 @@ const HomeScreen = (props) => {
 
 
   return (
+
     <View style={styles.container}>
+
       <Text style={styles.title}>
         Clicker App</Text>
       <View>
@@ -78,9 +80,11 @@ const HomeScreen = (props) => {
         </TouchableOpacity>
       </View>
       {/* <UpgradeScreen /> */}
-      <View>
+      <View style={{ flex: 1 }}>
         <Text style={styles.upgradeTitle}>Upgrades:</Text>
-        <View>
+        <ScrollView style={styles.scrollview}>
+
+
           {/* {this.state.showButton && <Button onPress={() => this.setState({ showButton: false })}>Hello</Button>} */}
 
           <UpgradeItem
@@ -106,8 +110,38 @@ const HomeScreen = (props) => {
             upgrade={() => autoClicker(10)}
           />
 
+          <UpgradeItem
+            title='Cooler clicker'
+            description='what does this do??'
+            cost={100}
+            buyUpgrade={buytheUpgrade}
+            upgrade={() => autoClicker(10)}
+          />
 
-        </View>
+          <UpgradeItem
+            title='Cooler clicker'
+            description='what does this do??'
+            cost={100}
+            buyUpgrade={buytheUpgrade}
+            upgrade={() => autoClicker(10)}
+          />
+          <UpgradeItem
+            title='Cooler clicker'
+            description='what does this do??'
+            cost={100}
+            buyUpgrade={buytheUpgrade}
+            upgrade={() => autoClicker(10)}
+          />
+          <UpgradeItem
+            title='Cooler clicker'
+            description='what does this do??'
+            cost={100}
+            buyUpgrade={buytheUpgrade}
+            upgrade={() => autoClicker(10)}
+          />
+
+
+        </ScrollView>
 
       </View>
 
@@ -118,7 +152,9 @@ const HomeScreen = (props) => {
 
 
 
+
     </View>
+
 
   )
 };
@@ -126,12 +162,15 @@ const HomeScreen = (props) => {
 
 
 const styles = StyleSheet.create({
+  scrollview: {
+    zIndex: 1,
+    flex: 1
+  },
   container: {
     backgroundColor: 'grey',
     flex: 1,
     backgroundColor: '#07121B',
     alignItems: 'center',
-    justifyContent: 'center'
   },
   title: {
     fontSize: 30,
