@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, Dimensions } from 'react-native';
 import { Text, StyleSheet, View, Button } from "react-native";
 
-
-
-
-
 const screen = Dimensions.get('window');
 
 const UpgradeItem = props => {
@@ -15,18 +11,12 @@ const UpgradeItem = props => {
 
     if (visible) {
         return (
-
-
             <TouchableOpacity style={styles.UpgradeItemContainer}
-
                 onPress={
                     () => {
                         let buy = props.buyUpgrade(props.cost, props.upgrade)
                         setVisible(buy)
-
                     }
-
-
                 }>
                 <View style={styles.section1}>
                     <Text style={styles.UpgradeItemTitle} >{props.title}</Text>
@@ -35,8 +25,6 @@ const UpgradeItem = props => {
                 <View style={styles.section2}>
                     <Text style={styles.UpgradeItemCost}>Cost: {props.cost}</Text>
                 </View>
-
-
             </TouchableOpacity>
         )
     }
@@ -47,9 +35,6 @@ const UpgradeItem = props => {
         )
     }
 }
-
-
-
 
 const styles = StyleSheet.create({
     UpgradeItemTitle: {
@@ -85,17 +70,11 @@ const styles = StyleSheet.create({
 
         width: '70%',
         alignItems: 'center',
-
-
-
     },
     section2: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
-
-
-
     }
 });
 export default UpgradeItem;

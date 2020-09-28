@@ -8,17 +8,12 @@ import UpgradeItem from '../components/UpgradeItem';
 
 const screen = Dimensions.get('window');
 
-// TO DO: 
-// add styling for when you can't afford an upgrade, and on purchase remove element somehow ? 'display: none' probably ? 
-
 const HomeScreen = (props) => {
 
   const [clickerValue, setClickNumber] = useState(0)
   const [autoClickerValue, setAutoClickerNumber] = useState(0);
   const [clickedValue, setclickedValue] = useState(1);
 
-
-  // setclickedValue(clickedValue + 1)
   useEffect(() => {
 
 
@@ -27,7 +22,6 @@ const HomeScreen = (props) => {
 
 
     }, 1500)
-
     return () => clearInterval(autoClkr)
   })
 
@@ -43,8 +37,6 @@ const HomeScreen = (props) => {
 
   function autoClicker(addedValue) {
     setAutoClickerNumber(autoClickerValue + addedValue)
-
-
   }
 
   function buytheUpgrade(cost, upgrade) {
@@ -61,32 +53,31 @@ const HomeScreen = (props) => {
     }
   }
 
-  function abbreviateNumber(value) {
-    var newValue = value;
-    if (value >= 1000) {
-      var suffixes = ["", "k", "m", "b", "t"];
-      var suffixNum = Math.floor(("" + value).length / 3);
-      var shortValue = '';
-      for (var precision = 2; precision >= 1; precision--) {
-        shortValue = parseFloat((suffixNum != 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(precision));
-        var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g, '');
-        if (dotLessShortValue.length <= 2) { break; }
-      }
-      if (shortValue % 1 != 0) shortValue = shortValue.toFixed(1);
-      newValue = shortValue + suffixes[suffixNum];
-    }
-    return setClickNumber(newValue);
-  }
+  // Can't seem to get this to work 
+  // function abbreviateNumber(value) {
+  //   var newValue = value;
+  //   if (value >= 1000) {
+  //     var suffixes = ["", "k", "m", "b", "t"];
+  //     var suffixNum = Math.floor(("" + value).length / 3);
+  //     var shortValue = '';
+  //     for (var precision = 2; precision >= 1; precision--) {
+  //       shortValue = parseFloat((suffixNum != 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(precision));
+  //       var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g, '');
+  //       if (dotLessShortValue.length <= 2) { break; }
+  //     }
+  //     if (shortValue % 1 != 0) shortValue = shortValue.toFixed(1);
+  //     newValue = shortValue + suffixes[suffixNum];
+  //   }
+  //   return setClickNumber(newValue);
+  // }
 
 
 
   return (
-
     <View style={styles.container}>
-
       <Text style={styles.title}>
         Clicker App
-        </Text>
+      </Text>
       <View>
         <TouchableOpacity style={styles.clickBtn} onPress={() => btnClicked(clickedValue)}>
           <Text style={styles.clickText} >
@@ -98,10 +89,6 @@ const HomeScreen = (props) => {
       <View style={{ flex: 1 }}>
         <Text style={styles.upgradeTitle}>Upgrades:</Text>
         <ScrollView style={styles.scrollview}>
-
-
-          {/* {this.state.showButton && <Button onPress={() => this.setState({ showButton: false })}>Hello</Button>} */}
-
           <UpgradeItem
             title='NeedaNameHere'
             description='2/cps!'
@@ -169,23 +156,9 @@ const HomeScreen = (props) => {
             buyUpgrade={buytheUpgrade}
             upgrade={() => increaseClickedValue(9)}
           />
-
-
         </ScrollView>
-
       </View>
-
-
-
-
-
-
-
-
-
     </View>
-
-
   )
 };
 
@@ -229,7 +202,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#B9AAFF',
   }
-
 });
 
 export default HomeScreen;
