@@ -17,7 +17,6 @@ const HomeScreen = (props) => {
   const [autoClickerValue, setAutoClickerNumber] = useState(0);
   const [clickedValue, setclickedValue] = useState(1);
 
-  let visible = true;
 
   // setclickedValue(clickedValue + 1)
   useEffect(() => {
@@ -63,6 +62,22 @@ const HomeScreen = (props) => {
     }
   }
 
+  //   function abbreviateNumber(value) {
+  //     var newValue = value;
+  //     if (value >= 1000) {
+  //         var suffixes = ["", "k", "m", "b","t"];
+  //         var suffixNum = Math.floor( (""+value).length/3 );
+  //         var shortValue = '';
+  //         for (var precision = 2; precision >= 1; precision--) {
+  //             shortValue = parseFloat( (suffixNum != 0 ? (value / Math.pow(1000,suffixNum) ) : value).toPrecision(precision));
+  //             var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
+  //             if (dotLessShortValue.length <= 2) { break; }
+  //         }
+  //         if (shortValue % 1 != 0)  shortValue = shortValue.toFixed(1);
+  //         newValue = shortValue+suffixes[suffixNum];
+  //     }
+  //     return newValue;
+  // }
 
 
 
@@ -71,7 +86,8 @@ const HomeScreen = (props) => {
     <View style={styles.container}>
 
       <Text style={styles.title}>
-        Clicker App</Text>
+        Clicker App
+        </Text>
       <View>
         <TouchableOpacity style={styles.clickBtn} onPress={() => btnClicked(clickedValue)}>
           <Text style={styles.clickText} >
@@ -88,56 +104,71 @@ const HomeScreen = (props) => {
           {/* {this.state.showButton && <Button onPress={() => this.setState({ showButton: false })}>Hello</Button>} */}
 
           <UpgradeItem
-            title='bad auto clicker'
-            description='clicks it for you!'
+            title='NeedaNameHere'
+            description='2/cps!'
             cost={3}
             buyUpgrade={buytheUpgrade}
-            upgrade={() => autoClicker(5)}
+            upgrade={() => autoClicker(2)}
           />
 
           <UpgradeItem
-            title='Clickier buttons'
-            description='more click value'
+            title='NeedaNameHeres'
+            description='3 per click'
+            cost={10}
+            buyUpgrade={buytheUpgrade}
+            upgrade={() => increaseClickedValue(3)}
+          />
+          <UpgradeItem
+            title='NeedaNameHere'
+            description='4/cps'
             cost={30}
+            buyUpgrade={buytheUpgrade}
+            upgrade={() => autoClicker(4)}
+          />
+
+          <UpgradeItem
+            title='NeedaNameHere'
+            description='5 per click'
+            cost={100}
             buyUpgrade={buytheUpgrade}
             upgrade={() => increaseClickedValue(5)}
           />
+
           <UpgradeItem
-            title='Cooler clicker'
-            description='what does this do??'
-            cost={100}
+            title='NeedaNameHere'
+            description='5/cps'
+            cost={120}
+            buyUpgrade={buytheUpgrade}
+            upgrade={() => autoClicker(5)}
+          />
+          <UpgradeItem
+            title='NeedaNameHere'
+            description='6 per click'
+            cost={150}
+            buyUpgrade={buytheUpgrade}
+            upgrade={() => increaseClickedValue(6)}
+          />
+          <UpgradeItem
+            title='NeedaNameHere'
+            description='10/cps'
+            cost={160}
             buyUpgrade={buytheUpgrade}
             upgrade={() => autoClicker(10)}
+          />
+          <UpgradeItem
+            title='NeedaNameHere'
+            description='50/cps'
+            cost={500}
+            buyUpgrade={buytheUpgrade}
+            upgrade={() => autoClicker(50)}
           />
 
           <UpgradeItem
-            title='Cooler clicker'
-            description='what does this do??'
-            cost={100}
+            title='NeedaNameHere'
+            description='9 per click'
+            cost={800}
             buyUpgrade={buytheUpgrade}
-            upgrade={() => autoClicker(10)}
-          />
-
-          <UpgradeItem
-            title='Cooler clicker'
-            description='what does this do??'
-            cost={100}
-            buyUpgrade={buytheUpgrade}
-            upgrade={() => autoClicker(10)}
-          />
-          <UpgradeItem
-            title='Cooler clicker'
-            description='what does this do??'
-            cost={100}
-            buyUpgrade={buytheUpgrade}
-            upgrade={() => autoClicker(10)}
-          />
-          <UpgradeItem
-            title='Cooler clicker'
-            description='what does this do??'
-            cost={100}
-            buyUpgrade={buytheUpgrade}
-            upgrade={() => autoClicker(10)}
+            upgrade={() => increaseClickedValue(9)}
           />
 
 
@@ -173,6 +204,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
+    marginTop: 30,
     fontSize: 30,
     textAlign: 'center',
     color: '#B9AAFF',
