@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, View, Button, Dimensions, TouchableOpacity, ScrollView } from "react-native";
 import UpgradeScreen from '../components/UpgradeScreen';
-import { setNumber, getClickNumber } from "../hooks/index";
+
 import UpgradeItem from '../components/UpgradeItem';
 
 
@@ -23,17 +23,16 @@ const HomeScreen = (props) => {
 
 
     const autoClkr = setInterval(() => {
-      setNumber(clickerValue + autoClickerValue)
+      setClickNumber(clickerValue + autoClickerValue)
 
-      setClickNumber(getClickNumber())
+
     }, 1500)
 
     return () => clearInterval(autoClkr)
   })
 
   function btnClicked(addedValue) {
-    setNumber(clickerValue + addedValue)
-    setClickNumber(getClickNumber())
+    setClickNumber(clickerValue + addedValue)
     console.log(clickerValue)
   }
 
@@ -53,8 +52,7 @@ const HomeScreen = (props) => {
       return true
     } else {
       console.log('can afford, upgrade purchased')
-      setNumber(clickerValue - cost)
-      setClickNumber(getClickNumber())
+      setClickNumber(clickerValue - cost)
       console.log(clickerValue)
       // calls the upgrade function the user buys
       upgrade()

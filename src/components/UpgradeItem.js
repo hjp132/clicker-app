@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, Dimensions } from 'react-native';
 import { Text, StyleSheet, View, Button } from "react-native";
-import { setNumber, getClickNumber } from "../hooks/index";
+
 
 
 
@@ -9,11 +9,6 @@ import { setNumber, getClickNumber } from "../hooks/index";
 const screen = Dimensions.get('window');
 
 const UpgradeItem = props => {
-    const [clickerValue, setValue] = useState(0)
-    useEffect(() => {
-        setValue(getClickNumber())
-    })
-
     const [visible, setVisible] = useState(true);
 
 
