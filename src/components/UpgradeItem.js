@@ -25,10 +25,9 @@ const UpgradeItem = props => {
                         setVisible(buy)
 
                     }
-                    // props.buyUpgrade(props.cost)
 
-                }
-            >
+
+                }>
                 <View style={styles.section1}>
                     <Text style={styles.UpgradeItemTitle} >{props.title}</Text>
                     <Text style={styles.UpgradeItemDesc} >{props.description}</Text>
